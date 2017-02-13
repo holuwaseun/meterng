@@ -1,0 +1,66 @@
+<div id="body">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading border0">
+                        <h4 class="text-center"><i class="icon icon-energy"></i> Instant Token Purchase</h4>
+                    </div>
+                    <div class="panel-body padding0 border0">
+                        <form method="POST" ng-submit="index.makeRequest()">
+                            <ul class="list-group border0 margin0">
+                                <li class="list-group-item border0">
+                                    <div class="form-group form-animate-text" style="margin: 5px 0px !important;">
+                                        <input type="text" name="meter_number" ng-model="index.new_request.meter_number" class="form-text" required>
+                                        <span class="bar "></span>
+                                        <label>Meter Number</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border0">
+                                    <div class="form-group form-animate-text" style="margin: 5px 0px !important;">
+                                        <input type="text " name="phone_number" ng-model="index.new_request.phone_number" class="form-text" required>
+                                        <span class="bar "></span>
+                                        <label>Phone Number</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border0">
+                                    <div class="form-group form-animate-text" style="margin: 5px 0px !important;">
+                                        <input type="email" name="email_address" ng-model="index.new_request.email_address" class="form-text" required>
+                                        <span class="bar "></span>
+                                        <label>Email Address</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border0">
+                                    <div class="form-group form-animate-text" style="margin: 5px 0px !important;">
+                                        <input type="number" name="amount" ng-model="index.new_request.amount" class="form-text" required>
+                                        <span class="bar "></span>
+                                        <label>Token Amount</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border0">
+                                    <div class="form-group form-animate-text" style="margin: 5px 0px !important;">
+                                        <select name="city" ng-model="index.new_request.city" class="form-text" required>
+                                            <option value="">Select City</option>
+                                        </select>
+                                        <span class="bar "></span>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border0 text-center">
+                                    <button ng-disabled="index.processing" class="btn btn-success btn-md">
+                                        <span ng-if="!index.processing"><i class="fa fa-check"></i> Make Token Request</span>
+                                        <span ng-if="index.processing"><i class=" fa fa-spin icon-refresh"></i> Please Wait...</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                    <div class="panel-footer border0">
+                        <p class="text-center important">
+                            We do not charge any convenience fee
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

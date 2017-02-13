@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html ng-app="MeterNG" lang="en">
+
+<head>
+    <base href="/">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="description" content="Meter.NG v1.1.0">
+    <meta name="author" content="Rand Global">
+
+    <title ng-bind="'MeterNG - ' + $root.title">MeterNG</title>
+
+    <link href="/scripts/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="/scripts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="/scripts/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="/scripts/angular-loading-bar/src/loading-bar.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="/scripts/icheck/skins/flat/aero.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="/scripts/pnotify/dist/pnotify.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/scripts/pnotify/dist/pnotify.buttons.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="/scripts/datatables.net-dt/css/jquery.dataTables.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="/scripts/animate.css/animate.min.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="assets/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+
+    <link href="assets/css/app.style.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+
+<body>
+
+    <main role="main" ng-controller="AuthController">
+        <nav class="navbar navbar-fixed-top navbar-custom">
+            <section class="container" id="container-navbar">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <i class="icon icon-menu"></i>
+                    </button>
+                    <a class="navbar-brand" ui-sref="index">
+                        <img alt="Brand" src="assets/img/logo.png">
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav nav-pills navbar-right" id="site-navbar">
+                        <li role="presentation" ng-class="{active: ($root.current_path === 'index')}"><a ui-sref="index"><i class="icon icon-energy"></i> Instant Purchase</a></li>
+                        <li role="presentation" ng-class="{active: ($root.current_path === 'contact')}"><a ui-sref="contact_us"><i class="icon icon-phone"></i> Contact Us</a></li>
+                        <li ng-if="!$root.logged_in" role="presentation" ng-class="{active: ($root.current_path === 'access')}"><a ui-sref="login"><i class="icon icon-login"></i> Sign In</a></li>
+                        <li ng-if="$root.logged_in" role="presentation" ng-class="{active: ($root.current_path === 'dashboard')}"><a ui-sref="dashboard"><i class="icon icon-user"></i> {{ $root.user_data.username }}</a></li>
+                    </ul>
+                </div>
+            </section>
+        </nav>
+
+        <section id="container-body" ui-view></section>
+
+        <section class="footer" id="site-footer">
+            <div class="container">
+                <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                    <div class="row">
+                        <div style="margin-bottom: 30px;" class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+                            <img src="assets/img/paystack.png" style="width: 90%;" />
+                        </div>
+                        <div style="margin-bottom: 30px;" class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+                            <img src="assets/img/boca.png" style="width: 90%;" />
+                        </div>
+                        <div style="margin-bottom: 30px;" class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+                            <img src="assets/img/klmini.png" style="width: 50%;" />
+                        </div>
+                        <div style="margin-bottom: 30px;" class="col-xs-12 col-sm-6 col-md-3 col-lg-3 text-center">
+                            <img src="assets/img/aedc.png" style="width: 90%;" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4 text-center">
+                            <p>All Rights Reserved</p>
+                            <p>MeterNG. Copyright &copy; 2017</p>
+                            <p>Rand Global</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+    </script>
+
+    <!-- JQuery Library -->
+    <script src="/scripts/jquery/dist/jquery.min.js"></script>
+
+    <!-- Twitter Bootstrap Library -->
+    <script src="/scripts/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Pines Notify Library -->
+    <script src="/scripts/pnotify/dist/pnotify.js"></script>
+    <script src="/scripts/pnotify/dist/pnotify.buttons.js"></script>
+
+    <!-- DataTables Bootstrap Library -->
+    <script src="/scripts/datatables.net/js/jquery.dataTables.js"></script>
+
+    <!-- Angular JS Library -->
+    <script src="/scripts/angular/angular.min.js"></script>
+    <script src="/scripts/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="/scripts/angular-animate/angular-animate.min.js"></script>
+
+    <!-- Angular JS Route Dependency Library -->
+    <script src="/scripts/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <!-- Angular JS Loading Bar Dependency Library -->
+    <script src="/scripts/angular-loading-bar/src/loading-bar.js"></script>
+
+    <!-- Angular JS DataTable Dependency Library -->
+    <script src="/scripts/angular-datatables/dist/angular-datatables.min.js"></script>
+
+    <!-- Angular Services -->
+    <script src="app/services/auth-service.js"></script>
+    <script src="app/services/service.js"></script>
+
+    <!-- Angular Controllers -->
+    <script src="app/controllers/controller.js"></script>
+
+    <!-- Angular Routes -->
+    <script src="app/app-routes.js"></script>
+
+    <!-- Angular App -->
+    <script src="app/app.js"></script>
+
+    <script>
+        if (window.module) module = window.module;
+    </script>
+
+</body>
+
+</html>

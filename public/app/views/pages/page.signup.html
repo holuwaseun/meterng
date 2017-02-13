@@ -1,0 +1,69 @@
+<div id="body">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading border0">
+                        <h4 class="text-center"><i class="icon icon-user-follow"></i> Create New Account</h4>
+                    </div>
+                    <div class="panel-body padding0 border0">
+                        <form method="POST" ng-submit="access.createAccount()">
+                            <ul class="list-group border0 margin0">
+                                <li class="list-group-item border0">
+                                    <div class="form-group form-animate-text" style="margin: 5px 0px !important;">
+                                        <input type="text" name="fullname" ng-model="access.new_account.fullname" class="form-text" required>
+                                        <span class="bar "></span>
+                                        <label><i class="icon icon-user"></i> Fullname</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border0">
+                                    <div class="form-group form-animate-text" style="margin: 5px 0px !important;">
+                                        <input type="email" name="email_address" ng-model="access.new_account.email_address" class="form-text" required>
+                                        <span class="bar "></span>
+                                        <label><i class="icon icon-envelope"></i> Email Address</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border0">
+                                    <div class="form-group form-animate-text" style="margin: 5px 0px !important;">
+                                        <input type="text" name="phone_number" ng-model="access.new_account.phone_number" class="form-text" required>
+                                        <span class="bar "></span>
+                                        <label><i class="icon icon-phone"></i> Phone Number</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border0">
+                                    <div class="form-group form-animate-text" style="margin: 5px 0px !important;">
+                                        <input type="password" name="password" ng-model="access.new_login.password" class="form-text" required>
+                                        <span class="bar "></span>
+                                        <label><i class="icon icon-key"></i> Password</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border0">
+                                    <div class="form-group form-animate-text" style="margin: 5px 0px !important;">
+                                        <input type="password" name="password" ng-model="access.new_login.password" class="form-text" required>
+                                        <span class="bar "></span>
+                                        <label><i class="icon icon-key"></i> Retype Password</label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border0 text-center">
+                                    <button ng-disabled="access.processing" class="btn btn-success btn-md">
+                                        <span ng-if="!access.processing"><i class="icon icon-user-follow"></i> Create Account</span>
+                                        <span ng-if="access.processing"><i class=" fa fa-spin icon-refresh"></i> Please Wait...</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                    <div class="panel-footer border0 text-center">
+                        <button ng-disabled="access.processing_fb" class="btn btn-primary btn-md">
+                            <span ng-if="!access.processing_fb"><i class="icon icon-social-facebook"></i> Facebook Login</span>
+                            <span ng-if="access.processing_fb"><i class=" fa fa-spin icon-refresh"></i> Please Wait...</span>
+                        </button>
+                        <a ui-sref="login" class="btn btn-success btn-md">
+                            <span><i class="icon icon-login"></i> Log In</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
