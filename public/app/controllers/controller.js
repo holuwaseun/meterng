@@ -9,6 +9,8 @@ angular.module("Controller", ["Auth-Service", "Service"])
         LightUp.get_access_token($rootScope.lightup).then((response) => {
             console.log(response)
         })
+    } else {
+        console.log($rootScope.lightup_token)
     }
 
 }])
