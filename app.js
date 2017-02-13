@@ -15,7 +15,7 @@ app.get("*", (request, response) => {
     response.sendFile(`${ __dirname }/public/app/views/index.html`)
 })
 
-http.listen(8080, (err) => {
+http.listen(process.env.PORT, (err) => {
     if (err) {
         console.log(err)
     }
