@@ -51,3 +51,13 @@ angular.module("Service", [])
 
     return lightUpFactory
 }])
+
+.factory("QuickTeller", ['$http', '$q', function($http, $q) {
+    let quickTellerFactory = {}
+
+    quickTellerFactory.get_billers = () => {
+        return $http.get("http://croberts-001-site2.ftempurl.com/randglobal/apis/interswitch/billers").then((response) => {
+            return response
+        })
+    }
+}])
