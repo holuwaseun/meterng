@@ -15,7 +15,7 @@ app.get("*", (request, response) => {
     response.sendFile(`${ __dirname }/public/app/views/index.html`)
 })
 
-http.listen(2285, (err) => {
+http.listen(8080, (err) => {
     if (err) {
         console.log(err)
     }
