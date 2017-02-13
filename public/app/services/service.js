@@ -60,4 +60,6 @@ angular.module("Service", [])
             return response
         })
     }
+
+    return quickTellerFactory
 }])
