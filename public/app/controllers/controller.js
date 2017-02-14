@@ -16,8 +16,9 @@ angular.module("Controller", ["Auth-Service", "Service"])
 }])
 
 .controller("AuthController", ['$rootScope', '$scope', '$filter', '$state', 'Auth', function($rootScope, $scope, $filter, $state, Auth) {
-    $scope.requestAuth = () => {
-        console.log($scope.new_login)
+    const access = this
+    access.requestAuth = () => {
+        console.log(access.new_login)
     }
 }])
 
