@@ -27,7 +27,7 @@ core_app.use(morgan("dev"))
 core_app.use(express.static(`${ __dirname }/public`))
 core_app.use("/scripts", express.static(`${ __dirname }/node_modules`))
 
-let api = require("./app/routes/api")(core_app, express, io)
+let api = require("./app/route/api")(core_app, express, io)
 
 core_app.use("/api", api)
 
