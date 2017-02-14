@@ -69,34 +69,45 @@ angular.module("App-Routes", ["ui.router"])
                 $rootScope.current_path = 'access'
             }
         })
-        .state("dashboard", {
-            url: "/dashboard",
+        .state("main", {
+            templateUrl: "app/views/pages/page.main.html"
+        })
+        .state("main.dashboard", {
+            url: "/main/dashboard",
             templateUrl: "app/views/pages/page.dashboard.html",
-            access: { restricted: true },
             controller: "DashboardController",
             controllerAs: "dashboard",
             onEnter: ($rootScope, $state) => {
-                $rootScope.title = `Dashboard`
+                if (!$rootScope.logged_in) {
+                    $state.go("login", null, { reload: true })
+                }
+                $rootScope.title = `MeterNG - Dashboard`
             }
         })
-        .state("report", {
-            url: "/report",
+        .state("main.report", {
+            url: "/main/report",
             templateUrl: "app/views/pages/page.report.html",
             access: { restricted: true },
             controller: "ReportController",
             controllerAs: "report",
             onEnter: ($rootScope, $state) => {
-                $rootScope.title = `Reports`
+                if (!$rootScope.logged_in) {
+                    $state.go("login", null, { reload: true })
+                }
+                $rootScope.title = `MeterNG - Reports`
             }
         })
-        .state("members", {
-            url: "/members",
+        .state("main.members", {
+            url: "/main/members",
             templateUrl: "app/views/pages/page.members.html",
             access: { restricted: true },
             controller: "DashboardController",
             controllerAs: "dashboard",
             onEnter: ($rootScope, $state) => {
-                $rootScope.title = `Dashboard`
+                if (!$rootScope.logged_in) {
+                    $state.go("login", null, { reload: true })
+                }
+                $rootScope.title = `MeterNG - Registered Users`
             }
         })
         .state("recover_password", {
@@ -121,11 +132,20 @@ angular.module("App-Routes", ["ui.router"])
             }
         })
         .state("error", {
-            url: "/error",
-            templateUrl: "app/views/pages/page.error.html",
-            access: { restricted: false },
+            templateUrl: "app/views/pages/page.error.html"
+        })
+        .state("error.404", {
+            url: "/error/404",
+            templateUrl: "app/views/pages/page.404.html",
             onEnter: ($rootScope, $state) => {
-                $rootScope.title = `Ooops!!`
+                $rootScope.title = `VLS - Error`
+            }
+        })
+        .state("error.500", {
+            url: "/error/500",
+            templateUrl: "app/views/pages/page.500.html",
+            onEnter: ($rootScope, $state) => {
+                $rootScope.title = `VLS - Error`
             }
         })
 

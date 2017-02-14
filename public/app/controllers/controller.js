@@ -18,7 +18,28 @@ angular.module("Controller", ["Auth-Service", "Service"])
 .controller("AuthController", ['$rootScope', '$scope', '$filter', '$state', 'Auth', function($rootScope, $scope, $filter, $state, Auth) {
     const access = this
     access.requestAuth = () => {
-        console.log(access.new_login)
+        access.processing = true
+        Auth.login(access.new_login).then((response) => {
+            access.processing = false
+            if (response.status === 200 && response.success === true) {
+                new PNotify({
+                    title: 'Auth Passed',
+                    text: response.message,
+                    type: 'success',
+                    delay: 3000,
+                    styling: 'bootstrap3'
+                })
+                $state.go("main.dashboard", null, { reload: true })
+            } else {
+                new PNotify({
+                    title: 'Auth Failed',
+                    text: response.message,
+                    type: 'error',
+                    delay: 3000,
+                    styling: 'bootstrap3'
+                })
+            }
+        })
     }
 }])
 

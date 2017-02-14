@@ -4,16 +4,21 @@ angular.module("Auth-Service", [])
 
     let authTokenFactory = {}
 
-    authTokenFactory.setToken = function(token) {
+    authTokenFactory.setToken = function(token, period) {
         if (token) {
-            $window.localStorage.setItem("token", token)
+            if (period === "Long") {
+                $window.localStorage.setItem("meterNgToken", token)
+            } else {
+                $window.sessionStorage.setItem("meterNgToken", token)
+            }
         } else {
-            $window.localStorage.removeItem("token")
+            $window.localStorage.removeItem("meterNgToken")
+            $window.sessionStorage.removeItem("meterNgToken")
         }
     }
 
     authTokenFactory.getToken = function() {
-        return $window.localStorage.getItem("token")
+        return ($window.localStorage.getItem("meterNgToken") || $window.sessionStorage.getItem("meterNgToken"))
     }
 
     authTokenFactory.get_lightup_token = function() {
@@ -31,7 +36,11 @@ angular.module("Auth-Service", [])
     authFactory.login = function(userObj) {
         return $http.post("http://localhost:2284/api/auth", userObj).then((response) => {
             if (response.data.token) {
-                AuthToken.setToken(response.data.token)
+                if (userObj.remember) {
+                    AuthToken.setToken(response.data.token, "Long")
+                } else {
+                    AuthToken.setToken(response.data.token, "Short")
+                }
             }
             return response.data
         })
@@ -71,12 +80,12 @@ angular.module("Auth-Service", [])
 
     authInterceptorFactory.request = function(config) {
 
-        let token = AuthToken.getToken()
+        let meterNgToken = AuthToken.getToken()
         let lightup_token = AuthToken.get_lightup_token()
         config.headers['postman-token'] = "bf880533-ca06-fcbb-5408-ddce8e9ae173"
 
-        if (token) {
-            config.headers["x-access-token"] = token
+        if (meterNgToken) {
+            config.headers["x-access-token"] = meterNgToken
         }
 
         if (lightup_token) {
