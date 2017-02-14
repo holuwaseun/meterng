@@ -63,7 +63,7 @@ angular.module("Service", [])
     let quickTellerFactory = {}
 
     quickTellerFactory.get_billers = () => {
-        return $http.get("https://croberts-001-site2.ftempurl.com/randglobal/apis/interswitch/billers").then((response) => {
+        return $http.get("http://croberts-001-site2.ftempurl.com/randglobal/apis/interswitch/billers").then((response) => {
             return response
         })
     }
