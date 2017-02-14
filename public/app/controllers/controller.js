@@ -16,7 +16,9 @@ angular.module("Controller", ["Auth-Service", "Service"])
 }])
 
 .controller("AuthController", ['$rootScope', '$scope', '$filter', '$state', 'Auth', function($rootScope, $scope, $filter, $state, Auth) {
-
+    $scope.requestAuth = () => {
+        console.log($scope.new_login)
+    }
 }])
 
 .controller("PaymentController", ['$rootScope', '$scope', '$filter', '$state', function($rootScope, $scope, $filter, $state) {
