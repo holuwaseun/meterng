@@ -47,7 +47,7 @@ angular.module("Auth-Service", [])
     }
 
     authFactory.signup = (userObj) => {
-        return $http.post("/api/user/create", userObj).then((response) => {
+        return $http.post("/api/signup", userObj).then((response) => {
             if (response.data.token) {
                 AuthToken.setToken(response.data.token, "Short")
             }

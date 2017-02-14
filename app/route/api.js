@@ -19,7 +19,7 @@ module.exports = (app, express, io) => {
     // Handles registration of
     // users
     */
-    api.post("/user/create", (request, response) => {
+    api.post("/signup", (request, response) => {
         User.find({ email_address: request.body.email_address }, (err, users) => {
             if (err) {
                 response.status(200).send({
