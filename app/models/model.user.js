@@ -7,20 +7,12 @@ let UserSchema = new Schema({
     account_type: { type: String, required: true }, //Admin, Agent, User
     meter_number: { type: String, required: false },
     fullname: { type: String, required: true },
-    username: { type: String, required: true, unique: true, minlength: [6, "The username is too short, minimum length is {MINLENGTH}"] },
     password: { type: String, required: true, select: false, minlength: [6, "The password is too short, minimum length is {MINLENGTH}"] },
     email_address: { type: String, required: true, unique: true },
+    phone_number: { type: String, required: true },
     date_added: { type: Date, default: Date.now },
     deleted: { type: Boolean, default: false }
 })
-
-UserSchema.query.byAccountType = function(account_type) {
-    return this.find({ account_type: account_type, deleted: false })
-}
-
-UserSchema.query.byUsername = function(username) {
-    return this.findOne({ username: username, deleted: false })
-}
 
 UserSchema.pre("save", (next) => {
     let user = this

@@ -33,7 +33,7 @@ angular.module("Auth-Service", [])
 
     let authFactory = {}
 
-    authFactory.login = function(userObj) {
+    authFactory.login = (userObj) => {
         return $http.post("/api/auth", userObj).then((response) => {
             if (response.data.token) {
                 if (userObj.remember) {
@@ -46,11 +46,20 @@ angular.module("Auth-Service", [])
         })
     }
 
-    authFactory.logout = function() {
+    authFactory.signup = (userObj) => {
+        return $http.post("/api/user/create", userObj).then((response) => {
+            if (response.data.token) {
+                AuthToken.setToken(response.data.token, "Short")
+            }
+            return response.data
+        })
+    }
+
+    authFactory.logout = () => {
         AuthToken.setToken()
     }
 
-    authFactory.isLoggedIn = function() {
+    authFactory.isLoggedIn = () => {
         if (AuthToken.getToken()) {
             return true
         } else {
@@ -58,9 +67,9 @@ angular.module("Auth-Service", [])
         }
     }
 
-    authFactory.getUser = function() {
+    authFactory.getUser = () => {
         if (AuthToken.getToken()) {
-            return $http.get("http://localhost:2284/api/me").then((response) => {
+            return $http.get("/api/me").then((response) => {
                 if (response.status !== 403) {
                     return response
                 }

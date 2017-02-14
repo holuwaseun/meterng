@@ -17,6 +17,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
 
 .controller("AuthController", ['$rootScope', '$scope', '$filter', '$state', 'Auth', function($rootScope, $scope, $filter, $state, Auth) {
     const access = this
+
     access.requestAuth = () => {
         access.processing = true
         Auth.login(access.new_login).then((response) => {
@@ -33,6 +34,31 @@ angular.module("Controller", ["Auth-Service", "Service"])
             } else {
                 new PNotify({
                     title: 'Auth Failed',
+                    text: response.message,
+                    type: 'error',
+                    delay: 3000,
+                    styling: 'bootstrap3'
+                })
+            }
+        })
+    }
+
+    access.createAccount = () => {
+        access.processing = true
+        Auth.signup(access.new_account).then((response) => {
+            access.processing = false
+            if (response.status === 200 && response.success === true) {
+                new PNotify({
+                    title: 'Signup Complete',
+                    text: response.message,
+                    type: 'success',
+                    delay: 3000,
+                    styling: 'bootstrap3'
+                })
+                $state.go("main.dashboard", null, { reload: true })
+            } else {
+                new PNotify({
+                    title: 'Signup Failed',
                     text: response.message,
                     type: 'error',
                     delay: 3000,

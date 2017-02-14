@@ -19,8 +19,8 @@ module.exports = (app, express, io) => {
     // Handles registration of
     // users
     */
-    api.post("/user/signup", (request, response) => {
-        User.find({ username: request.body.username }, (err, users) => {
+    api.post("/user/create", (request, response) => {
+        User.find({ email_address: request.body.email_address }, (err, users) => {
             if (err) {
                 response.status(200).send({
                     status: 403,
@@ -35,18 +35,17 @@ module.exports = (app, express, io) => {
                 response.status(200).send({
                     status: 200,
                     success: false,
-                    message: "Username is already taken"
+                    message: "Email is already in use by a user"
                 })
                 return
             }
 
             let userObj = new User({
                 account_type: "User",
-                username: request.body.username,
-                password: request.body.password,
                 fullname: request.body.fullname,
                 email_address: request.body.email_address,
-                meter_number: request.body.meter_number
+                phone_number: request.body.phone_number,
+                password: request.body.password
             })
 
             userObj.save((err, savedUser) => {
@@ -60,11 +59,23 @@ module.exports = (app, express, io) => {
                     return
                 }
 
+                token_obj = {
+                    _id: savedUser._id,
+                    account_type: savedUser.account_type,
+                    fullname: savedUser.fullname,
+                    email_address: savedUser.email_address,
+                    phone_number: savedUser.phone_number,
+                    meter_number: ""
+                }
+
+                let user_token = createToken(token_obj)
+
                 response.status(200).json({
                     status: 200,
                     success: true,
-                    message: "Account has been created",
-                    data: savedUser
+                    message: "Account has been created, redirecting to dashboard",
+                    data: savedUser,
+                    token: user_token
                 })
             })
         })
@@ -78,13 +89,13 @@ module.exports = (app, express, io) => {
     */
     api.post("/auth", (request, response) => {
         let userObj = {
-            username: request.body.username,
+            email_address: request.body.email_address,
             password: request.body.password
         }
 
         let token_obj = {}
 
-        User.find().byUsername(userObj.username).select("account_type meter_number fullname username password email_address").exec((err, user) => {
+        User.findOne({ email_address: userObj.email_address }).select("account_type meter_number fullname password phone_number email_address").exec((err, user) => {
             if (err) {
                 response.status(200).send({
                     status: 403,
@@ -108,16 +119,16 @@ module.exports = (app, express, io) => {
                     response.status(200).send({
                         status: 200,
                         success: false,
-                        message: "Invalid password, please try again"
+                        message: "Invalid credentials, please try again"
                     })
                 } else {
                     token_obj = {
                         _id: user._id,
                         account_type: user.account_type,
-                        username: user.username,
                         fullname: user.fullname,
                         email_address: user.department_name,
-                        meter_number: user.meter_number
+                        phone_number: user.phone_number,
+                        meter_number: user.meter_number || ""
                     }
 
                     let user_token = createToken(token_obj)
