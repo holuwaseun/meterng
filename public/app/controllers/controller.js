@@ -45,8 +45,34 @@ angular.module("Controller", ["Auth-Service", "Service"])
 
     access.createAccount = () => {
         access.processing = true
+
+        if (access.new_account.password.length < 6) {
+            access.processing = false
+            new PNotify({
+                title: 'Input Error',
+                text: "Password length should be greater than 6, please try again",
+                type: 'error',
+                delay: 3000,
+                styling: 'bootstrap3'
+            })
+            return false
+        }
+
+        if (access.new_account.password !== access.new_account.verify_password) {
+            access.processing = false
+            new PNotify({
+                title: 'Input Error',
+                text: "Passwords do not match, please try again",
+                type: 'error',
+                delay: 3000,
+                styling: 'bootstrap3'
+            })
+            return false
+        }
+
         Auth.signup(access.new_account).then((response) => {
             access.processing = false
+
             if (response.status === 200 && response.success === true) {
                 new PNotify({
                     title: 'Signup Complete',
