@@ -98,18 +98,17 @@ angular.module("Auth-Service", [])
 
 }])
 
-/*
 .factory("SocketIO", ['$rootScope', function($rootScope) {
 
-    let socket = io.connect('http://localhost:2284')
+    let socket = io.connect()
     let disconnecting = false
 
     return {
         on: function(eventName, callback) {
-            socket.on(eventName, function() {
+            socket.on(eventName, () => {
                 let args = arguments
                 if (!disconnecting) {
-                    $rootScope.$apply(function() {
+                    $rootScope.$apply(() => {
                         callback.apply(socket, args)
                     })
                 } else {
@@ -118,9 +117,9 @@ angular.module("Auth-Service", [])
             })
         },
         emit: function(eventName, data, callback) {
-            socket.emit(eventName, data, function() {
+            socket.emit(eventName, data, () => {
                 let args = arguments
-                $rootScope.$apply(function() {
+                $rootScope.$apply(() => {
                     if (callback) {
                         callback.apply(socket, args)
                     }
@@ -133,6 +132,4 @@ angular.module("Auth-Service", [])
         },
         socket: socket
     }
-
 }])
-*/
