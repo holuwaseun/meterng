@@ -28,11 +28,18 @@ angular.module("Service", [])
 
 }])
 
-.factory("LightUp", ['$http', '$q', function($http, $q) {
+.factory("LightUp", ['$http', '$httpParamSerializer', '$q', function($http, $httpParamSerializer, $q) {
     let lightUpFactory = {}
 
     lightUpFactory.get_access_token = (post_object) => {
-        return $http.post("https://vendors.lightup.com.ng/AccessToken", post_object).then((response) => {
+        return $http({
+            url: "https://vendors.lightup.com.ng/AccessToken",
+            method: "POST",
+            data: $httpParamSerializer(post_object),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then((response) => {
             return response
         })
     }
