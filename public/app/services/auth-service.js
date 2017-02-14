@@ -34,7 +34,7 @@ angular.module("Auth-Service", [])
     let authFactory = {}
 
     authFactory.login = function(userObj) {
-        return $http.post("http://localhost:2284/api/auth", userObj).then((response) => {
+        return $http.post("/api/auth", userObj).then((response) => {
             if (response.data.token) {
                 if (userObj.remember) {
                     AuthToken.setToken(response.data.token, "Long")
