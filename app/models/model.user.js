@@ -14,14 +14,14 @@ let UserSchema = new Schema({
     deleted: { type: Boolean, default: false }
 })
 
-UserSchema.pre("save", (next) => {
+UserSchema.pre("save", function(next) {
     let user = this
 
     if (!user.isModified("password")) {
         return next()
     }
 
-    bcrypt.hash(user.password, null, null, (err, hash) => {
+    bcrypt.hash(user.password, null, null, function(err, hash) {
         if (err) {
             return next(err)
         }
