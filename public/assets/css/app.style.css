@@ -32,6 +32,10 @@
     border-radius: 0;
 }
 
+.padding-0 {
+    padding: 0;
+}
+
 #container-body {
     padding-top: 72px;
 }
