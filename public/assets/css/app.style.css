@@ -17,7 +17,11 @@
     position: fixed;
     height: 100%;
     left: 0;
-    top: 0;
+    top: 70px;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 #container-body {

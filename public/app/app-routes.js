@@ -82,6 +82,7 @@ angular.module("App-Routes", ["ui.router"])
                     $state.go("login", null, { reload: true })
                 }
                 $rootScope.title = `MeterNG - Dashboard`
+                $rootScope.current_path = 'dashboard'
             }
         })
         .state("main.report", {
@@ -95,6 +96,7 @@ angular.module("App-Routes", ["ui.router"])
                     $state.go("login", null, { reload: true })
                 }
                 $rootScope.title = `MeterNG - Reports`
+                $rootScope.current_path = 'reports'
             }
         })
         .state("main.members", {
@@ -108,6 +110,7 @@ angular.module("App-Routes", ["ui.router"])
                     $state.go("login", null, { reload: true })
                 }
                 $rootScope.title = `MeterNG - Registered Users`
+                $rootScope.current_path = 'members'
             }
         })
         .state("recover_password", {

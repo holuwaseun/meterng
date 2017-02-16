@@ -56,7 +56,7 @@
                         <li role="presentation" ng-class="{active: ($root.current_path === 'index')}"><a ui-sref="index"><i class="icon icon-energy"></i> Instant Purchase</a></li>
                         <li role="presentation" ng-class="{active: ($root.current_path === 'contact')}"><a ui-sref="contact_us"><i class="icon icon-phone"></i> Contact Us</a></li>
                         <li ng-if="!$root.logged_in" role="presentation" ng-class="{active: ($root.current_path === 'access')}"><a ui-sref="login"><i class="icon icon-login"></i> Sign In</a></li>
-                        <li ng-if="$root.logged_in" role="presentation" ng-class="{active: ($root.current_path === 'dashboard')}"><a ui-sref="dashboard"><i class="icon icon-user"></i> {{ $root.user_data.username }}</a></li>
+                        <li ng-if="$root.logged_in" role="presentation" ng-class="{active: ($root.current_path === 'dashboard')}"><a ui-sref="main.dashboard"><i class="icon icon-user"></i> {{ $root.user_data.email_address }}</a></li>
                     </ul>
                 </div>
             </section>
