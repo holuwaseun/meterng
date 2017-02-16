@@ -71,7 +71,7 @@ angular.module("Auth-Service", [])
         if (AuthToken.getToken()) {
             return $http.get("/api/me").then((response) => {
                 if (response.status !== 403) {
-                    return response
+                    return response.data
                 }
             })
         } else {

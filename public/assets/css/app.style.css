@@ -8,6 +8,18 @@
     padding: 30px 0px;
 }
 
+#dashbody {
+    background-color: #EEE;
+    padding: 30px 0px;
+}
+
+.sidebar {
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
 #container-body {
     padding-top: 72px;
 }

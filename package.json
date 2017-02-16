@@ -1,51 +1,54 @@
 {
-    "name": "meterng",
-    "version": "1.1.0",
-    "description": "Token generating platform for prepaid meter users in Nigeria",
-    "main": "app.js",
-    "scripts": {
-        "start": "node app"
-    },
-    "keywords": [
-        "Meter",
-        "Nigeria",
-        "Token",
-        "Prepaid",
-        "MeterNG"
-    ],
-    "repository": {
-        "type": "GitHub",
-        "url": "https://github.com/holuwaseun/meterng.git"
-    },
-    "author": "Rand Global",
-    "license": "ISC",
-    "dependencies": {
-        "angular": "^1.6.0",
-        "angular-animate": "^1.6.1",
-        "angular-datatables": "^0.5.6",
-        "angular-loading-bar": "^0.9.0",
-        "angular-moment": "^1.0.1",
-        "angular-route": "^1.6.0",
-        "angular-sanitize": "^1.6.1",
-        "angular-ui-router": "^0.3.2",
-        "animate.css": "^3.5.2",
-        "bcrypt-nodejs": "0.0.3",
-        "body-parser": "^1.15.2",
-        "bootstrap": "^3.3.7",
-        "cors": "^2.8.1",
-        "datatables.net": "^1.10.13",
-        "express": "^4.14.0",
-        "font-awesome": "^4.7.0",
-        "icheck": "^1.0.2",
-        "ionicons": "^3.0.0",
-        "jquery": "^3.1.1",
-        "jsonwebtoken": "^7.2.1",
-        "mongodb": "^2.2.16",
-        "mongoose": "^4.7.3",
-        "morgan": "^1.7.0",
-        "pnotify": "^3.0.0",
-        "simple-line-icons": "^2.4.1",
-        "socket.io": "^1.7.2",
-        "themify-icons": "^1.0.0"
-    }
+  "name": "meterng",
+  "version": "1.1.0",
+  "description": "Token generating platform for prepaid meter users in Nigeria",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "keywords": [
+    "Meter",
+    "Nigeria",
+    "Token",
+    "Prepaid",
+    "MeterNG"
+  ],
+  "repository": {
+    "type": "GitHub",
+    "url": "https://github.com/holuwaseun/meterng.git"
+  },
+  "author": "Rand Global",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.0",
+    "angular-animate": "^1.6.1",
+    "angular-datatables": "^0.5.6",
+    "angular-loading-bar": "^0.9.0",
+    "angular-moment": "^1.0.1",
+    "angular-route": "^1.6.0",
+    "angular-sanitize": "^1.6.1",
+    "angular-ui-router": "^0.3.2",
+    "animate.css": "^3.5.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "cors": "^2.8.1",
+    "datatables.net": "^1.10.13",
+    "express": "^4.14.0",
+    "font-awesome": "^4.7.0",
+    "icheck": "^1.0.2",
+    "ionicons": "^3.0.0",
+    "jquery": "^3.1.1",
+    "jsonwebtoken": "^7.2.1",
+    "mongodb": "^2.2.16",
+    "mongoose": "^4.7.3",
+    "morgan": "^1.7.0",
+    "morris.js": "^0.5.0",
+    "ng-morris-js": "^0.3.4",
+    "pnotify": "^3.0.0",
+    "raphael": "^2.2.7",
+    "simple-line-icons": "^2.4.1",
+    "socket.io": "^1.7.2",
+    "themify-icons": "^1.0.0"
+  }
 }

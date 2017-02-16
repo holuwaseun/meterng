@@ -18,4 +18,18 @@ angular.module("MeterNG", ["App-Routes", "Auth-Service", "Controller", "ngAnimat
 
     $rootScope.logged_in = false
     $rootScope.user_data = []
+
+    $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams, options) => {
+        $rootScope.logged_in = Auth.isLoggedIn()
+
+        if ($rootScope.logged_in) {
+            Auth.getUser().then((response) => {
+                $rootScope.user_data = response.user_data
+            })
+        }
+    })
+
+    $rootScope.$on('$stateNotFound', (event, unfoundState, fromState, fromParams) => {
+        $state.go("error.403", null, { reload: true })
+    })
 }])

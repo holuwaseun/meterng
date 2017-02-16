@@ -4,8 +4,8 @@ const bcrypt = require("bcrypt-nodejs")
 let Schema = mongoose.Schema
 
 let UserSchema = new Schema({
-    account_type: { type: String, required: true }, //Admin, Agent, User
     meter_number: { type: String, required: false },
+    account_type: { type: String, required: true }, //Admin, Agent, User
     fullname: { type: String, required: true },
     password: { type: String, required: true, select: false, minlength: [6, "The password is too short, minimum length is {MINLENGTH}"] },
     email_address: { type: String, required: true, unique: true },
