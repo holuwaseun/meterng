@@ -56,6 +56,10 @@
     padding-right: 0;
 }
 
+.small {
+    font-size: 10px !important;
+}
+
 #container-body {
     padding-top: 72px;
 }
