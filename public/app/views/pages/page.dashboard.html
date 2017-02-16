@@ -60,7 +60,7 @@
                                 <th>Trans. Date</th>
                             </tr>
                         </thead>
-                        <tbody ng-if="dashboard.latest_transaction">
+                        <tbody>
                             <tr ng-repeat="transaction in dashboard.latest_transaction">
                                 <td>{{ transaction.reference_number }}</td>
                                 <td>{{ transaction.meter_number }}</td>
