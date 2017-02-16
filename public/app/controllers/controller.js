@@ -118,6 +118,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
     let dashboard = this
 
     if ($rootScope.user_data.account_type === 'User') {
+        dashboard.latest_transaction = []
         Dashboard.latestTransaction().then((response) => {
             if (response.status === 200) {
                 dashboard.latest_transaction = response.transaction_data
