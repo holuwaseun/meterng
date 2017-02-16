@@ -4,8 +4,15 @@
             <div class="hidden-xs hidden-sm col-md-2 col-lg-2 sidebar padding-0">
                 <ul class="list-group list-unstyled border-radius-0">
                     <li class="list-group-item border-radius-0">
-                        <p class="bold">{{ $root.user_data.fullname }}</p>
-                        <p>{{ $root.user_data.email_address }}</p>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <img class="media-object image-circle" src="assets/img/avatar.png" />
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{ $root.user_data.fullname }}</h4>
+                                <p>{{ $root.user_data.email_address }}</p>
+                            </div>
+                        </div>
                     </li>
                     <li class="list-group-item" ng-class="{active: ($root.current_path === 'dashboard')}"><a ui-sref="main.dashboard"><i class="icon icon-speedometer"></i> Dashboard</a></li>
                     <li class="list-group-item" ng-if="$root.user_data.account_type === 'Admin'" ng-class="{active: ($root.current_path === 'members')}"><a ui-sref="main.members"><i class="icon icon-people"></i> Members</a></li>
