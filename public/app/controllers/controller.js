@@ -120,10 +120,9 @@ angular.module("Controller", ["Auth-Service", "Service"])
     if ($rootScope.user_data.account_type === 'User') {
         Dashboard.latestTransaction().then((response) => {
             if (response.status === 200) {
-                console.log(response.transaction_data)
                 dashboard.latest_transaction = response.transaction_data
             } else {
-                dashboard.latest_transaction = {}
+                dashboard.latest_transaction = []
                 new PNotify({
                     title: response.message,
                     text: response.error_message,
