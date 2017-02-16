@@ -14,6 +14,8 @@ angular.module("MeterNG", ["App-Routes", "Auth-Service", "Controller", "ngAnimat
         grant_type: "password"
     }
 
+    $root.current_date = new Date()
+
     $rootScope.lightup_token;
 
     $rootScope.logged_in = false
