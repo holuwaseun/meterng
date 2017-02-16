@@ -9,6 +9,7 @@ let MeterSchema = new Schema({
     reference_number: { type: String, required: true },
     transaction_amount: { type: Number, required: true },
     transaction_token: { type: String, required: true },
+    transaction_unit: { type: Number, required: true },
     transaction_date: { type: Date, default: Date.now },
     deleted: { type: Boolean, default: false }
 })
