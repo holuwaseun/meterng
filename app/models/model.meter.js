@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt-nodejs")
 let Schema = mongoose.Schema
 
 let MeterSchema = new Schema({
-    _user_id: { type: Schema.ObjectId, required: true, ref: User },
+    _user_id: { type: Schema.ObjectId, required: true, ref: "User" },
     meter_number: { type: String, required: true },
     reference_number: { type: String, required: true },
     transaction_amount: { type: Number, required: true },
