@@ -114,8 +114,24 @@ angular.module("Controller", ["Auth-Service", "Service"])
 
 }])
 
-.controller("DashboardController", ['$rootScope', '$scope', '$filter', '$state', function($rootScope, $scope, $filter, $state) {
+.controller("DashboardController", ['$rootScope', '$scope', '$filter', '$state', 'Dashboard', function($rootScope, $scope, $filter, $state, Dashboard) {
+    let dashboard = this
 
+    if ($rootScope.user_data.account_type === 'User') {
+        Dashboard.latestTransaction().then((response) => {
+            if (response.status === '200') {
+                dashboard.latest_transaction = response.transaction_data
+            } else {
+                new PNotify({
+                    title: response.message,
+                    text: response.error_message,
+                    type: 'error',
+                    delay: 3000,
+                    styling: 'bootstrap3'
+                })
+            }
+        })
+    }
 }])
 
 .controller("ReportController", ['$rootScope', '$scope', '$filter', '$state', function($rootScope, $scope, $filter, $state) {

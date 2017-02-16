@@ -70,3 +70,15 @@ angular.module("Service", [])
 
     return quickTellerFactory
 }])
+
+.factory("Dashboard", ['$http', '$q', function($http, $q) {
+    let dashboardFactory = {}
+
+    dashboardFactory.latestTransaction = () => {
+        return $http.get("/api/transaction/latest").then((response) => {
+            return response.data
+        })
+    }
+
+    return dashboardFactory
+}])

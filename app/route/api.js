@@ -2,6 +2,7 @@ const config = require("../../config")
 const jsonwebtoken = require("jsonwebtoken")
 
 const User = require("../models/model.user")
+const Meter = require("../models/model.meter")
 
 function createToken(user, secret_key = config.secretKey) {
     let token = jsonwebtoken.sign(user, secret_key, {
@@ -172,6 +173,31 @@ module.exports = (app, express, io) => {
                 next()
             })
         }
+    })
+
+    api.get("/transaction/latest", (request, response) => {
+        let search_param = {
+            user_id: request.decoded._id,
+            meter_number: request.decoded.meter_number
+        }
+        Meter.find({ $or: [{ '_user_id': search_param.user_id }, { 'meter_number': search_param.meter_number }] }).sort({ transaction_date: -1 }).limit(7).exec((err, transactions) => {
+            if (err) {
+                response.status(200).send({
+                    status: 403,
+                    success: false,
+                    message: "Error occured",
+                    error_message: err.message
+                })
+                return
+            }
+
+            response.status(200).json({
+                status: 200,
+                success: true,
+                message: "Latest transactions loaded",
+                transaction_data: transactions
+            })
+        })
     })
 
     api.get("/me", (request, response) => {

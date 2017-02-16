@@ -57,9 +57,19 @@
                                 <th>Mobile Number</th>
                                 <th>Email Address</th>
                                 <th>Amount ()</th>
+                                <th>Trans. Date</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody ng-if="dashboard.latest_transaction">
+                            <tr ng-repeat="transaction in dashboard.latest_transaction">
+                                <td>{{ transaction.reference_number }}</td>
+                                <td>{{ transaction.meter_number }}</td>
+                                <td>{{ transaction.mobile_number }}</td>
+                                <td>{{ transaction.email_address }}</td>
+                                <td>{{ transaction.transaction_amount | number: 2 }}</td>
+                                <td>{{ transaction.transaction_date | date: "d M, y" }}</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
