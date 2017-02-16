@@ -3,14 +3,14 @@
         <div class="row">
             <div class="hidden-xs hidden-sm col-md-2 col-lg-2 sidebar padding-0">
                 <ul class="list-group list-unstyled border-radius-0">
-                    <li class="list-group-item">
+                    <li class="list-group-item border-radius-0">
                         <p class="bold">{{ $root.user_data.fullname }}</p>
                         <p>{{ $root.user_data.email_address }}</p>
                     </li>
                     <li class="list-group-item" ng-class="{active: ($root.current_path === 'dashboard')}"><a ui-sref="main.dashboard"><i class="icon icon-speedometer"></i> Dashboard</a></li>
                     <li class="list-group-item" ng-if="$root.user_data.account_type === 'Admin'" ng-class="{active: ($root.current_path === 'members')}"><a ui-sref="main.members"><i class="icon icon-people"></i> Members</a></li>
                     <li class="list-group-item" ng-class="{active: ($root.current_path === 'reports')}"><a ui-sref="main.report"><i class="icon icon-pie-chart"></i> Reports</a></li>
-                    <li class="list-group-item"><a ui-sref="logout"><i class="icon icon-logout"></i> Logout</a></li>
+                    <li class="list-group-item border-radius-0"><a ui-sref="logout"><i class="icon icon-logout"></i> Logout</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-10 col-md-push-2 col-lg-10 col-lg-push-2">
