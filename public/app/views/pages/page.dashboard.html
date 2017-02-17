@@ -14,7 +14,16 @@
                     <h3><i class="icon icon-graph"></i> Monthly Token Requests</h3>
                 </div>
                 <div class="panel-body">
-                    <ng-morris-bar-chart chart-options="dashboard.monthly_transaction.options" chart-data="dashboard.monthly_transaction.data"></ng-morris-bar-chart>
+                    <div line-chart line-data='[
+                        { y: "2006", a: 74, b: 47 },
+                        { y: "2007", a: 83,  b: 70 },
+                        { y: "2008", a: 54,  b: 92 },
+                        { y: "2009", a: 31,  b: 53 },
+                        { y: "2010", a: 92,  b: 83 },
+                        { y: "2011", a: 30,  b: 42 },
+                        { y: "2012", a: 11, b: 6 }
+                    ]' line-xkey='y' line-ykeys='["a", "b"]' line-labels='["Serie A", "Serie B"]' line-colors='["#31C0BE", "#c7254e"]'>
+                    </div>
                 </div>
             </div>
         </div>
