@@ -1,4 +1,4 @@
-angular.module("MeterNG", ["App-Routes", "Auth-Service", "Controller", "ngAnimate", "angular-loading-bar", "ngSanitize", "datatables"])
+angular.module("MeterNG", ["App-Routes", "Auth-Service", "Controller", "ngAnimate", "angular-loading-bar", "ng-morris-js", "ngSanitize", "datatables"])
 
 .config(['$httpProvider', function($httpProvider) {
 
