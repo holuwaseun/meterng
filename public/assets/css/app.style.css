@@ -24,6 +24,15 @@
     top: 70px;
 }
 
+.client-menu li.list-group-item {
+    color: #333;
+    font-weight: 600;
+}
+
+.client-menu li.list-group-item .active {
+    color: #FFF;
+}
+
 .bold {
     font-weight: bold;
 }
