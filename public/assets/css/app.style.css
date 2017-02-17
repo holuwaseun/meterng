@@ -29,7 +29,7 @@
     font-weight: 600;
 }
 
-.client-menu li.list-group-item .active a {
+.client-menu li.list-group-item.active a {
     color: #FFF;
 }
 
