@@ -120,8 +120,15 @@ angular.module("Controller", ["Auth-Service", "Service"])
     if ($rootScope.user_data.account_type === 'User') {
         dashboard.latest_transaction = []
         dashboard.monthly_transaction = {
-            options: [],
-            data: []
+            data: [
+                { y: "2006", a: 74, b: 47 },
+                { y: "2007", a: 83, b: 70 },
+                { y: "2008", a: 54, b: 92 },
+                { y: "2009", a: 31, b: 53 },
+                { y: "2010", a: 92, b: 83 },
+                { y: "2011", a: 30, b: 42 },
+                { y: "2012", a: 11, b: 6 }
+            ]
         }
 
         Dashboard.latestTransaction().then((response) => {
