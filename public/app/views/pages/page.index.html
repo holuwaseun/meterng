@@ -39,8 +39,8 @@
                                 </li>
                                 <li class="list-group-item border0">
                                     <div class="form-group form-animate-text" style="margin: 5px 0px !important;">
-                                        <select name="city" ng-model="index.new_request.city" class="form-text" required>
-                                            <option value="">Select City</option>
+                                        <select ng-model="index.new_request.biller" ng-options="biller.billername for biller in billers">
+                                            <option value="">Select Biller</option>
                                         </select>
                                         <span class="bar "></span>
                                     </div>

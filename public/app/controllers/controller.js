@@ -1,8 +1,16 @@
 angular.module("Controller", ["Auth-Service", "Service"])
 
 .controller("IndexController", ['$rootScope', '$scope', '$filter', '$state', 'LightUp', 'QuickTeller', function($rootScope, $scope, $filter, $state, LightUp, QuickTeller) {
+    $scope.billers = []
     QuickTeller.get_billers().then((response) => {
-        console.log(response.billers)
+        if (response.billers) {
+            let b
+            for (b = 105; b <= 122; b++) {
+                if (response.billers[b].categoryid === "1") {
+                    $scope.billers.push($response.billers[b])
+                }
+            }
+        }
     })
 
     if (!$rootScope.lightup_token) {
