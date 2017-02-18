@@ -30,6 +30,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
         })
 
         Facebook.checkLogin().then((response) => {
+            console.log(response)
             access.show_fb = response.show_button
         })
     }
