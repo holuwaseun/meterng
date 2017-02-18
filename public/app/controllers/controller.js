@@ -118,12 +118,11 @@ angular.module("Controller", ["Auth-Service", "Service"])
     let dashboard = this
 
     dashboard.destroySession = () => {
-        Auth.destroySession().then((response) => {
-            $rootScope.logged_in = Auth.isLoggedIn()
-            if (!$rootScope.logged_in) {
-                $state.go("index", null, { reload: true })
-            }
-        })
+        Auth.destroySession()
+        $rootScope.logged_in = Auth.isLoggedIn()
+        if (!$rootScope.logged_in) {
+            $state.go("index", null, { reload: true })
+        }
     }
 
     if ($rootScope.user_data.account_type === 'User') {
