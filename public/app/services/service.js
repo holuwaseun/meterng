@@ -20,6 +20,28 @@ angular.module("Service", [])
 
 }])
 
+.factory("Facebook", ['$http', '$q', function($http, $q) {
+    const facebookFactory = {}
+
+    facebookFactory.checkLogin = function() {
+        return FB.getLoginStatus((response) => {
+            if (response.status === 'connected') {
+                return { authorized: true, show_button: false }
+            } else {
+                return { authorized: false, show_button: true }
+            }
+        })
+    }
+
+    facebookFactory.facebookAuth = function() {
+        return FB.api('/me', 'get', { access_token: token }, { fields: 'id,name,email' }, (response) => {
+            return response
+        })
+    }
+
+    return facebookFactory
+}])
+
 .factory("Purchase", ['$http', '$q', function($http, $q) {
 
     let purchaseFactory = {}

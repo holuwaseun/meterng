@@ -15,8 +15,53 @@ angular.module("Controller", ["Auth-Service", "Service"])
 
 }])
 
-.controller("AuthController", ['$rootScope', '$scope', '$filter', '$state', 'Auth', function($rootScope, $scope, $filter, $state, Auth) {
+.controller("AuthController", ['$rootScope', '$scope', '$filter', '$window', '$state', 'Auth', 'Facebook', function($rootScope, $scope, $filter, $window, $state, Auth, Facebook) {
     const access = this
+
+    access.new_account = {}
+
+    access.show_fb = false
+
+    $window.fbAsyncInit = () => {
+        FB.init({
+            appId: $rootScope.appID,
+            xfbml: false,
+            version: $rootScope.version
+        })
+
+        Facebook.checkLogin().then((response) => {
+            access.show_fb = response.show_button
+        })
+    }
+
+    access.facebookAuth = () => {
+        let nonce = ""
+        let i
+        const range = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+        for (i = 0; i < 10; i++) {
+            nonce += range.charAt(Math.floor(Math.random() * range.length))
+        }
+
+        FB.login((response) => {
+            const token = response.authResponse.accessToken
+            const uid = response.authResponse.userID
+            if (response.authResponse) {
+                Facebook.facebookAuth(token).then((response) => {
+                    access.new_account = {
+                        fullname: response.name,
+                        email_address: response.email,
+                        password: nonce,
+                        verify_password: nonce
+                    }
+
+                    access.processing_fb = true
+                    access.createAccount()
+                })
+            }
+        }, {
+            scope: 'public_profile,email'
+        })
+    }
 
     access.requestAuth = () => {
         access.processing = true
@@ -48,6 +93,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
 
         if (access.new_account.password.length < 6) {
             access.processing = false
+            access.processing_fb = false
             new PNotify({
                 title: 'Input Error',
                 text: "Password length should be greater than 6, please try again",
@@ -60,6 +106,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
 
         if (access.new_account.password !== access.new_account.verify_password) {
             access.processing = false
+            access.processing_fb = false
             new PNotify({
                 title: 'Input Error',
                 text: "Passwords do not match, please try again",
@@ -72,6 +119,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
 
         Auth.signup(access.new_account).then((response) => {
             access.processing = false
+            access.processing_fb = false
 
             if (response.status === 200 && response.success === true) {
                 new PNotify({
@@ -115,7 +163,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
 }])
 
 .controller("MainController", ['$rootScope', '$scope', '$filter', '$state', 'Auth', function($rootScope, $scope, $filter, $state, Auth) {
-    let main = this
+    const main = this
 
     main.destroySession = () => {
         Auth.destroySession()
@@ -127,7 +175,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
 }])
 
 .controller("DashboardController", ['$rootScope', '$scope', '$filter', '$state', 'Dashboard', 'Auth', function($rootScope, $scope, $filter, $state, Dashboard, Auth) {
-    let dashboard = this
+    const dashboard = this
 
     if ($rootScope.user_data.account_type === 'User') {
         dashboard.latest_transaction = []

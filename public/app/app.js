@@ -14,6 +14,11 @@ angular.module("MeterNG", ["App-Routes", "Auth-Service", "Controller", "ngAnimat
         grant_type: "password"
     }
 
+    $rootScope.facebook = {
+        appID: '255146761528048',
+        version: 'v2.6'
+    }
+
     $rootScope.current_date = new Date()
 
     $rootScope.lightup_token;

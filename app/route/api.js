@@ -45,7 +45,7 @@ module.exports = (app, express, io) => {
                 account_type: "User",
                 fullname: request.body.fullname,
                 email_address: request.body.email_address,
-                phone_number: request.body.phone_number,
+                phone_number: request.body.phone_number || "",
                 password: request.body.password
             })
 

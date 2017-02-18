@@ -38,7 +38,7 @@
                         </form>
                     </div>
                     <div class="panel-footer border0 text-center">
-                        <button ng-disabled="access.processing_fb" class="btn btn-primary btn-md">
+                        <button ng-if="access.show_fb" ng-disabled="access.processing_fb" ng-click="access.facebookAuth()" class="btn btn-primary btn-md">
                             <span ng-if="!access.processing_fb"><i class="icon icon-social-facebook"></i> Facebook Login</span>
                             <span ng-if="access.processing_fb"><i class=" fa fa-spin icon-refresh"></i> Please Wait...</span>
                         </button>
