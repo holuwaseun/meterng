@@ -70,7 +70,9 @@ angular.module("App-Routes", ["ui.router"])
             }
         })
         .state("main", {
-            templateUrl: "app/views/pages/page.main.html"
+            templateUrl: "app/views/pages/page.main.html",
+            controller: "MainCOntroller",
+            controllerAs: "main"
         })
         .state("main.dashboard", {
             url: "/main/dashboard",
