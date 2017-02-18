@@ -127,7 +127,7 @@ module.exports = (app, express, io) => {
                         _id: user._id,
                         account_type: user.account_type,
                         fullname: user.fullname,
-                        email_address: user.department_name,
+                        email_address: user.email_address,
                         phone_number: user.phone_number,
                         meter_number: user.meter_number || ""
                     }
