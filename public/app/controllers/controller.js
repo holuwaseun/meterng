@@ -7,7 +7,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
             let b
             for (b = 105; b <= 122; b++) {
                 if (response.billers[b].categoryid === "1") {
-                    $scope.billers.push($response.billers[b])
+                    $scope.billers.push(response.billers[b])
                 }
             }
         }
