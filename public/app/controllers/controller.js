@@ -2,7 +2,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
 
 .controller("IndexController", ['$rootScope', '$scope', '$filter', '$state', 'LightUp', 'QuickTeller', function($rootScope, $scope, $filter, $state, LightUp, QuickTeller) {
     QuickTeller.get_billers().then((response) => {
-        console.log(response)
+        console.log(response.billers)
     })
 
     if (!$rootScope.lightup_token) {
