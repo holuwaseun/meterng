@@ -35,9 +35,15 @@ angular.module("Service", [])
     }
 
     facebookFactory.facebookAuth = function() {
-        return FB.api('/me', 'get', { access_token: token }, { fields: 'id,name,email' }, (response) => {
-            return response
+        var deferred = $q.defer();
+        FB.api('/me', { fields: 'id,name,email' }, (response) => {
+            if (!response || response.error) {
+                deferred.reject('Error occured')
+            } else {
+                deferred.resolve(response)
+            }
         })
+        return deferred.promise
     }
 
     return facebookFactory

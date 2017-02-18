@@ -16,7 +16,7 @@ angular.module("MeterNG", ["App-Routes", "Auth-Service", "Controller", "ngAnimat
 
     $rootScope.facebook = {
         appID: '255146761528048',
-        version: 'v2.6'
+        version: 'v2.4'
     }
 
     $rootScope.current_date = new Date()

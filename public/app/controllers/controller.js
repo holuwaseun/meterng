@@ -44,7 +44,9 @@ angular.module("Controller", ["Auth-Service", "Service"])
     $window.fbAsyncInit = () => {
         FB.init({
             appId: $rootScope.appID,
-            xfbml: false,
+            status: true,
+            cookie: true,
+            xfbml: true,
             version: $rootScope.version
         })
 
