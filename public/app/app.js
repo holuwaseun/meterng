@@ -27,6 +27,7 @@ angular.module("MeterNG", ["App-Routes", "Auth-Service", "Controller", "ngAnimat
         if ($rootScope.logged_in) {
             Auth.getUser().then((response) => {
                 $rootScope.user_data = response.user_data
+                console.log(response)
             })
         }
     })
