@@ -20,9 +20,9 @@ angular.module("Controller", ["Auth-Service", "Service"])
                 }
             }
         }
-    })
 
-    $scope.billers = $filter('orderBy')($scope.billers, "billername", true)
+        $scope.billers = $filter('orderBy')($scope.billers, "billername", true)
+    })
 
     if (!$rootScope.lightup_token) {
         LightUp.get_access_token($rootScope.lightup).then((response) => {
