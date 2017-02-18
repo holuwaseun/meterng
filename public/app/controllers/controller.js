@@ -114,8 +114,17 @@ angular.module("Controller", ["Auth-Service", "Service"])
 
 }])
 
-.controller("DashboardController", ['$rootScope', '$scope', '$filter', '$state', 'Dashboard', function($rootScope, $scope, $filter, $state, Dashboard) {
+.controller("DashboardController", ['$rootScope', '$scope', '$filter', '$state', 'Dashboard', 'Auth', function($rootScope, $scope, $filter, $state, Dashboard, Auth) {
     let dashboard = this
+
+    dashboard.destroySession = () => {
+        Auth.destroySession().then((response) => {
+            $rootScope.logged_in = Auth.isLoggedIn()
+            if (!$rootScope.logged_in) {
+                $state.go("index", null, { reload: true })
+            }
+        })
+    }
 
     if ($rootScope.user_data.account_type === 'User') {
         dashboard.latest_transaction = []
