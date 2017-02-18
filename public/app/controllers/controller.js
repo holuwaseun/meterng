@@ -1,7 +1,16 @@
 angular.module("Controller", ["Auth-Service", "Service"])
 
 .controller("IndexController", ['$rootScope', '$scope', '$filter', '$state', 'LightUp', 'QuickTeller', function($rootScope, $scope, $filter, $state, LightUp, QuickTeller) {
-    $scope.billers = []
+    $scope.billers = [{
+            billername: "Abuja Electricity Distribution Company"
+        },
+        {
+            billername: "Jos Electricity Distribution Company Prepaid"
+        },
+        {
+            billername: "Jos Electricity Distribution Company Postpaid"
+        }
+    ]
     QuickTeller.get_billers().then((response) => {
         if (response.billers) {
             let b
@@ -12,6 +21,8 @@ angular.module("Controller", ["Auth-Service", "Service"])
             }
         }
     })
+
+    $scope.billers = orderBy($scope.billers, billername, true)
 
     if (!$rootScope.lightup_token) {
         LightUp.get_access_token($rootScope.lightup).then((response) => {
