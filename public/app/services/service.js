@@ -25,6 +25,7 @@ angular.module("Service", [])
 
     facebookFactory.checkLogin = function() {
         return FB.getLoginStatus((response) => {
+            console.log(response)
             if (response.status === 'connected') {
                 return { authorized: true, show_button: false }
             } else {
