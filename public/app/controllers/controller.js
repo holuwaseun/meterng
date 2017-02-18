@@ -118,6 +118,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
     let dashboard = this
 
     dashboard.destroySession = () => {
+        console.log('why you not working?')
         Auth.destroySession()
         $rootScope.logged_in = Auth.isLoggedIn()
         if (!$rootScope.logged_in) {
