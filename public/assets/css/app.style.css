@@ -142,3 +142,26 @@ ul#site-navbar li.active {
         padding-bottom: 10px;
     }
 }
+
+/////
+#loading-bar .bar {
+    background: maroon;
+}
+
+#loading-bar-spinner .spinner-icon {
+    border-top-color: maroon;
+    border-left-color: maroon;
+}
+
+#loading-bar .peg {
+    -moz-box-shadow: maroon 1px 0 6px 1px;
+    -ms-box-shadow: maroon 1px 0 6px 1px;
+    -webkit-box-shadow: maroon 1px 0 6px 1px;
+    box-shadow: maroon 1px 0 6px 1px;
+}
+
+.loading-spinner {
+    -webkit-animation: spin 1s linear infinite;
+    -moz-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
