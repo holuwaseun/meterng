@@ -55,7 +55,7 @@ angular.module("Auth-Service", [])
         })
     }
 
-    authFactory.logout = () => {
+    authFactory.destroySession = () => {
         AuthToken.setToken()
     }
 
