@@ -25,17 +25,13 @@ angular.module("Service", [])
 
     facebookFactory.checkLogin = function() {
         return FB.getLoginStatus((response) => {
-            console.log("Help")
-            if (response.status === 'connected') {
-                return { authorized: true, show_button: false }
-            } else {
-                return { authorized: false, show_button: true }
-            }
+            console.log(response)
+            return response.status
         })
     }
 
     facebookFactory.facebookAuth = function() {
-        var deferred = $q.defer();
+        let deferred = $q.defer()
         FB.api('/me', { fields: 'id,name,email' }, (response) => {
             if (!response || response.error) {
                 deferred.reject('Error occured')

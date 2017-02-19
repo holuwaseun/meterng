@@ -19,6 +19,22 @@ angular.module("MeterNG", ["App-Routes", "Auth-Service", "Controller", "ngAnimat
         version: 'v2.4'
     }
 
+    (function(d) {
+        let js, id = 'facebook-jssdk',
+            ref = d.getElementsByTagName('script')[0]
+
+        if (d.getElementById(id)) {
+            return
+        }
+
+        js = d.createElement('script')
+        js.id = id
+        js.async = true
+        js.src = "//connect.facebook.net/en_US/sdk.js"
+
+        ref.parentNode.insertBefore(js, ref)
+    }(document))
+
     $rootScope.current_date = new Date()
 
     $rootScope.lightup_token;

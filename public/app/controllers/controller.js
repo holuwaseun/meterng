@@ -39,7 +39,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
 
     access.new_account = {}
 
-    access.show_fb = false
+    access.show_fb = true
 
     $window.fbAsyncInit = () => {
         FB.init({
@@ -51,8 +51,14 @@ angular.module("Controller", ["Auth-Service", "Service"])
         })
 
         Facebook.checkLogin().then((response) => {
-            console.log(response)
-            access.show_fb = response.show_button
+            if (response === "connected") {
+                access.show_fb = false
+                if (!$rootScope.logged_in) {
+                    console.log("Run auto login here")
+                }
+            } else {
+                access.show_fb = true
+            }
         })
     }
 
