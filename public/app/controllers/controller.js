@@ -50,7 +50,9 @@ angular.module("Controller", ["Auth-Service", "Service"])
             version: $rootScope.version
         })
 
+        console.log('checking login status')
         Facebook.checkLogin().then((response) => {
+            console.log(response)
             if (response === "connected") {
                 access.show_fb = false
                 if (!$rootScope.logged_in) {

@@ -20,8 +20,24 @@ angular.module("Service", [])
 
 }])
 
-.factory("Facebook", ['$http', '$q', function($http, $q) {
+.factory("Facebook", ['$http', '$q', '$document', function($http, $q, $document) {
     const facebookFactory = {}
+
+    facebookFactory.attachScript = function() {
+        let js, id = 'facebook-jssdk',
+            ref = $document.getElementsByTagName('script')[0]
+
+        if ($document.getElementById(id)) {
+            return
+        }
+
+        js = $document.createElement('script')
+        js.id = id
+        js.async = true
+        js.src = "//connect.facebook.net/en_US/sdk.js"
+
+        ref.parentNode.insertBefore(js, ref)
+    }
 
     facebookFactory.checkLogin = function() {
         return FB.getLoginStatus((response) => {

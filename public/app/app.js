@@ -1,4 +1,4 @@
-angular.module("MeterNG", ["App-Routes", "Auth-Service", "Controller", "ngAnimate", "angular-loading-bar", "ng-morris-js", "ngSanitize", "datatables"])
+angular.module("MeterNG", ["App-Routes", "Auth-Service", "Service", "Controller", "ngAnimate", "angular-loading-bar", "ng-morris-js", "ngSanitize", "datatables"])
 
 .config(['$httpProvider', function($httpProvider) {
 
@@ -6,7 +6,7 @@ angular.module("MeterNG", ["App-Routes", "Auth-Service", "Controller", "ngAnimat
 
 }])
 
-.run(['$rootScope', '$filter', '$state', 'Auth', function($rootScope, $filter, $state, Auth) {
+.run(['$rootScope', '$filter', '$state', 'Auth', 'Facebook', function($rootScope, $filter, $state, Auth, Facebook) {
 
     $rootScope.lightup = {
         username: "general@demo.com",
@@ -19,21 +19,7 @@ angular.module("MeterNG", ["App-Routes", "Auth-Service", "Controller", "ngAnimat
         version: 'v2.4'
     }
 
-    (function(d) {
-        let js, id = 'facebook-jssdk',
-            ref = d.getElementsByTagName('script')[0]
-
-        if (d.getElementById(id)) {
-            return
-        }
-
-        js = d.createElement('script')
-        js.id = id
-        js.async = true
-        js.src = "//connect.facebook.net/en_US/sdk.js"
-
-        ref.parentNode.insertBefore(js, ref)
-    }(document))
+    Facebook.attachScript()
 
     $rootScope.current_date = new Date()
 
