@@ -20,7 +20,7 @@ angular.module("Service", [])
 
 }])
 
-.factory("Facebook", ['$http', '$q', function($http, $q) {
+.factory("Facebook", ['$http', '$q', '$document', function($http, $q, $document) {
     const facebookFactory = {}
 
     facebookFactory.attachScript = function() {
