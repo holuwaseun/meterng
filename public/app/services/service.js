@@ -20,12 +20,12 @@ angular.module("Service", [])
 
 }])
 
-.factory("Facebook", ['$http', '$q', '$document', function($http, $q, $document) {
+.factory("Facebook", ['$http', '$q', function($http, $q) {
     const facebookFactory = {}
 
     facebookFactory.attachScript = function() {
         let js, id = 'facebook-jssdk',
-            ref = $document.getElementsByTagName('script')[0]
+            ref = angular.element(document).find('script')[0]
 
         if ($document.getElementById(id)) {
             return
