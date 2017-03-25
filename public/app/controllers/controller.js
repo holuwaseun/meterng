@@ -41,6 +41,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
 
     access.show_fb = true
 
+    /*
     $window.fbAsyncInit = () => {
         FB.init({
             appId: $rootScope.appID,
@@ -63,6 +64,7 @@ angular.module("Controller", ["Auth-Service", "Service"])
             }
         })
     }
+    */
 
     access.facebookAuth = () => {
         let nonce = ""
