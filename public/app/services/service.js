@@ -27,9 +27,11 @@ angular.module("Service", [])
         let js, id = 'facebook-jssdk',
             ref = angular.element(document).find('script')[0]
 
+        /*
         if ($document.getElementById(id)) {
             return
         }
+        */
 
         js = $document.createElement('script')
         js.id = id
