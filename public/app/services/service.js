@@ -31,7 +31,7 @@ angular.module("Service", [])
         if ($document.getElementById(id)) {
             return
         }
-        */
+        
 
         js = $document.createElement('script')
         js.id = id
@@ -39,6 +39,7 @@ angular.module("Service", [])
         js.src = "//connect.facebook.net/en_US/sdk.js"
 
         ref.parentNode.insertBefore(js, ref)
+        */
     }
 
     facebookFactory.checkLogin = function() {

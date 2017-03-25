@@ -19,7 +19,7 @@ angular.module("MeterNG", ["App-Routes", "Auth-Service", "Service", "Controller"
         version: 'v2.4'
     }
 
-    Facebook.attachScript()
+    //Facebook.attachScript()
 
     $rootScope.current_date = new Date()
 
